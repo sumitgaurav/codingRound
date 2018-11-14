@@ -24,12 +24,15 @@ public class FlightBookingTest {
         driver.findElement(By.id("OneWay")).click();
 
         driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        driver.findElement(By.id("FromTag")).sendKeys("Banga");
 
         //wait for the auto complete options to appear for the origin
 
         waitFor(2000);
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+       
+        waitFor(3000);
+        System.out.println(originOptions);
         originOptions.get(0).click();
 
         driver.findElement(By.id("toTag")).clear();
