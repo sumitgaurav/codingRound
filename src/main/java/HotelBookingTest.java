@@ -30,9 +30,9 @@ public class HotelBookingTest {
     public void setUp(){
     	driver = new ChromeDriver();
     	PageFactory.initElements(driver, this);
-    	driver.get("https://www.cleartrip.com/");
-    	
+    	driver.get("https://www.cleartrip.com/");  	
     }
+    
     @Test
     public void shouldBeAbleToSearchForHotels() {
   

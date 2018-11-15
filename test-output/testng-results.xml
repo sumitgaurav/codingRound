@@ -2,21 +2,25 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10651" started-at="2018-11-14T16:14:19Z" finished-at="2018-11-14T16:14:30Z">
+  <suite name="Default suite" duration-ms="16808" started-at="2018-11-15T16:12:03Z" finished-at="2018-11-15T16:12:20Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10651" started-at="2018-11-14T16:14:19Z" finished-at="2018-11-14T16:14:30Z">
-      <class name="FlightBookingTest">
-        <test-method status="FAIL" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:FlightBookingTest@156b88f5]" name="testThatResultsAppearForAOneWayJourney" duration-ms="10622" started-at="2018-11-14T16:14:19Z" finished-at="2018-11-14T16:14:30Z">
-          <exception class="java.lang.IndexOutOfBoundsException">
-            <message>
-              <![CDATA[Index: 0, Size: 0]]>
-            </message>
+    <test name="Default test" duration-ms="16808" started-at="2018-11-15T16:12:03Z" finished-at="2018-11-15T16:12:20Z">
+      <class name="testScripts.HotelBookingTestCase">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:testScripts.HotelBookingTestCase@47c62251]" name="launchBrowser" is-config="true" duration-ms="5128" started-at="2018-11-15T16:12:03Z" finished-at="2018-11-15T16:12:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.HotelBookingTestCase@47c62251]" name="setUp" is-config="true" duration-ms="34" started-at="2018-11-15T16:12:08Z" depends-on-methods="testBase.TestBase.launchBrowser" finished-at="2018-11-15T16:12:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="FAIL" signature="testSearchHotels()[pri:0, instance:testScripts.HotelBookingTestCase@47c62251]" name="testSearchHotels" duration-ms="11473" started-at="2018-11-15T16:12:08Z" finished-at="2018-11-15T16:12:20Z">
+          <exception class="java.lang.NullPointerException">
             <full-stacktrace>
-              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
-at java.util.ArrayList.rangeCheck(ArrayList.java:653)
-at java.util.ArrayList.get(ArrayList.java:429)
-at FlightBookingTest.testThatResultsAppearForAOneWayJourney(FlightBookingTest.java:36)
+              <![CDATA[java.lang.NullPointerException
+at pageLibrary.HotelBookingPage.enterLocalityAndCityName(HotelBookingPage.java:50)
+at testScripts.HotelBookingTestCase.testSearchHotels(HotelBookingTestCase.java:22)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -44,11 +48,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.IndexOutOfBoundsException -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
-      </class> <!-- FlightBookingTest -->
+        </test-method> <!-- testSearchHotels -->
+        <test-method status="PASS" signature="tearDownAppium()[pri:0, instance:testScripts.HotelBookingTestCase@47c62251]" name="tearDownAppium" is-config="true" duration-ms="141" started-at="2018-11-15T16:12:20Z" finished-at="2018-11-15T16:12:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownAppium -->
+      </class> <!-- testScripts.HotelBookingTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
