@@ -1,5 +1,6 @@
 package testScripts;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -20,13 +21,11 @@ public class HotelBookingTestCase extends TestBase {
 		hotelBookingPage.clickOnHotelsTab();
 		waitForElement(driver, 20,hotelBookingPage.localityTextBox);
 		hotelBookingPage.enterLocalityAndCityName("Indiranagar, Bangalore");
-		hotelBookingPage.selectDate("16");
-		waitFor(10);
-		hotelBookingPage.enterCheckOutDate("17");
+		hotelBookingPage.enterCheckInDate();
+		hotelBookingPage.enterCheckOutDate();
 		hotelBookingPage.selectTravellers("1 room, 2 adults");
-		waitFor(10);
 		hotelBookingPage.clickOnSearchButton();
-		
+		waitForElement(driver, 20, hotelBookingPage.searchTextBox);
+		Assert.assertEquals(hotelBookingPage.searchTextBox.getAttribute("placeholder"), "Search for location, hotel or address in Bangalore");
 	}
 }
-//td[not(contains(@class,'ui-datepicker-unselectable'))]/a[text()='1']

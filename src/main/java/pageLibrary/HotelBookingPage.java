@@ -33,8 +33,20 @@ public class HotelBookingPage extends TestBase {
     
     @FindBy(id = "SearchHotelsButton")
     private WebElement searchButton;
-
+    
+    @FindBy(id = "ui-id-1")
+    private WebElement localityList;
+     
+    @FindBy(xpath = "//td[not(contains(@class,'ui-datepicker-unselectable'))]/a[text()='16']")
+    private WebElement fromDate;
   
+    @FindBy(xpath = "//td[not(contains(@class,'ui-datepicker-unselectable'))]/a[text()='18']")
+    private WebElement toDate;
+    
+    @FindBy(id = "showNearByBox")
+    public WebElement searchTextBox;
+    
+    
 
     public HotelBookingPage(WebDriver driver){
     	PageFactory.initElements(driver, this);
@@ -47,26 +59,21 @@ public class HotelBookingPage extends TestBase {
     public void enterLocalityAndCityName(String name){
     	localityTextBox.sendKeys(name);
     	waitFor(5);
-    	List<WebElement> list = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
-    	list.get(1).click();
+    	localityList.findElements(By.tagName("li")).get(1).click();
     }
     
-    public void enterCheckInDate(String day){
+    public void enterCheckInDate(){
     	CheckInDateField.click();
-    	selectDate(day);
+    	fromDate.click();
     }
     
     
     
-    public void enterCheckOutDate(String day){
+    public void enterCheckOutDate(){
     	CheckOutDateField.click();
-    	selectDate(day);
+    	toDate.click();
     }
     
-    public void selectDate(String day){
-    	By calendarXpath = By.xpath("//td[not(contains(@class,'ui-datepicker-unselectable'))]/a[text()='"+ day+"']");
-    	driver.findElement(calendarXpath).click();
-    }
     
     public void selectTravellers(String traveller){
     	new Select(travellerSelection).selectByVisibleText(traveller);

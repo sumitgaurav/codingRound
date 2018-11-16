@@ -1,8 +1,12 @@
 package testBase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -17,7 +21,11 @@ public  class TestBase {
 	@BeforeTest
 
 	public void launchBrowser(){
-		driver= new ChromeDriver();
+		Map<String, Object> preference = new HashMap<String, Object>();
+		preference.put("profile.default_content_setting_values.notifications", 2);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", preference);
+		driver = new ChromeDriver(options);
 		setDriverPath();
 		driver.get("https://www.cleartrip.com/");
 	}
