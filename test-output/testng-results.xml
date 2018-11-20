@@ -2,27 +2,23 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9291" started-at="2018-11-16T05:15:44Z" finished-at="2018-11-16T05:15:53Z">
+  <suite name="Default suite" duration-ms="13304" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9291" started-at="2018-11-16T05:15:44Z" finished-at="2018-11-16T05:15:53Z">
+    <test name="Default test" duration-ms="13304" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:10Z">
       <class name="testScripts.SignInTestCase">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:testScripts.SignInTestCase@47c62251]" name="launchBrowser" is-config="true" duration-ms="5646" started-at="2018-11-16T05:15:44Z" finished-at="2018-11-16T05:15:50Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="setUp" is-config="true" duration-ms="10591" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:08Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="setUpPage()[pri:0, instance:testScripts.SignInTestCase@47c62251]" name="setUpPage" is-config="true" duration-ms="32" started-at="2018-11-16T05:15:50Z" depends-on-methods="testBase.TestBase.launchBrowser" finished-at="2018-11-16T05:15:50Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpPage -->
-        <test-method status="PASS" signature="testSignInError()[pri:0, instance:testScripts.SignInTestCase@47c62251]" name="testSignInError" duration-ms="3506" started-at="2018-11-16T05:15:50Z" finished-at="2018-11-16T05:15:53Z">
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testSignInError()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="testSignInError" duration-ms="2492" started-at="2018-11-20T10:48:08Z" finished-at="2018-11-20T10:48:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignInError -->
-        <test-method status="PASS" signature="tearDownAppium()[pri:0, instance:testScripts.SignInTestCase@47c62251]" name="tearDownAppium" is-config="true" duration-ms="87" started-at="2018-11-16T05:15:53Z" finished-at="2018-11-16T05:15:53Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="tearDown" is-config="true" duration-ms="188" started-at="2018-11-20T10:48:10Z" finished-at="2018-11-20T10:48:10Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDownAppium -->
+        </test-method> <!-- tearDown -->
       </class> <!-- testScripts.SignInTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

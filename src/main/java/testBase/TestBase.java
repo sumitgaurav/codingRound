@@ -15,12 +15,21 @@ import org.testng.annotations.BeforeTest;
 
 import com.sun.javafx.PlatformUtil;
 
-public  class TestBase {
-	public WebDriver driver;
+/**
+ * @author Sumit Kumar Sharma
+ * @created at 20-Nov-2018
+ * This java class contains the setup methods, Browser initialization methods.
+ */
+public abstract class TestBase {
+	public static WebDriver driver;
 	
-	@BeforeTest
-
-	public void launchBrowser(){
+	
+	public abstract void setUp();
+	
+	/**
+	 * This method is used to initialize the Chrome browser and redirecting to URL.
+	 */
+	public void initBrowser(){
 		Map<String, Object> preference = new HashMap<String, Object>();
 		preference.put("profile.default_content_setting_values.notifications", 2);
 		ChromeOptions options = new ChromeOptions();
@@ -30,22 +39,41 @@ public  class TestBase {
 		driver.get("https://www.cleartrip.com/");
 	}
 	
-	
+	/**
+	 * This method is used to wait explicitly for some time duration until element to be clickable.
+	 * @param driver 
+	 * @param time
+	 * @param element
+	 * @return
+	 */
 	public WebElement waitForElement(WebDriver driver,long time, WebElement element ){
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	public void waitFor(int sec) {
-		try {
-			Thread.sleep(sec*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	/**
+	 * This method is used to wait explicitly for some time duration until element to be visible.
+	 * @param driver 
+	 * @param time
+	 * @param element
+	 * @return
+	 */
+	public WebElement waitForElementToVisible(WebDriver driver, int time, WebElement element){
+		WebDriverWait wait = new WebDriverWait(driver, time);
+		return wait.until(ExpectedConditions.visibilityOf(element));	
 	}
 	
-
+	/**
+	 * This method is used to switch to frame based on frame name.
+	 * @param frameName
+	 */
+	public void switchToFrame(String frameName){
+		driver.switchTo().frame(frameName);
+	}
+	
+	/**
+	 * This method is used to set the driver based on system requirement.
+	 */
 	private void setDriverPath() {
 	        if (PlatformUtil.isMac()) {
 	            System.setProperty("webdriver.chrome.driver", "chromedriver");
@@ -57,8 +85,6 @@ public  class TestBase {
 	            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 	        }
 	    }
-	@AfterTest
-	public void tearDownAppium() {
-		driver.quit();
-	}
+	
+
 }

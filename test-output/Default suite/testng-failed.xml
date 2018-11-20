@@ -5,9 +5,8 @@
     <classes>
       <class name="testScripts.FlightBookingTestCase">
         <methods>
-          <include name="tearDownAppium"/>
+          <include name="tearDown"/>
           <include name="setUpPage"/>
-          <include name="launchBrowser"/>
           <include name="testSearchFlight"/>
         </methods>
       </class> <!-- testScripts.FlightBookingTestCase -->
