@@ -1,7 +1,12 @@
 package testBase;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,23 +27,32 @@ import com.sun.javafx.PlatformUtil;
  */
 public abstract class TestBase {
 	public static WebDriver driver;
+	public static Properties repository = new Properties();
+	public File fis;
+	public FileInputStream file;
 	
-	
-	public abstract void setUp();
+	public abstract void setUp() throws IOException;
 	
 	/**
 	 * This method is used to initialize the Chrome browser and redirecting to URL.
+	 * @throws IOException 
 	 */
-	public void initBrowser(){
+	public void initBrowser() throws IOException{
+		loadPropertiesFile();
 		Map<String, Object> preference = new HashMap<String, Object>();
 		preference.put("profile.default_content_setting_values.notifications", 2);
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", preference);
 		driver = new ChromeDriver(options);
 		setDriverPath();
-		driver.get("https://www.cleartrip.com/");
+		driver.get(repository.getProperty("URL"));
 	}
 	
+	public void loadPropertiesFile() throws IOException{
+		fis = new File(System.getProperty("user.dir")+"/src/main/java/properties/ObjectProperties");
+		file=new FileInputStream(fis);
+		repository.load(file);
+	}
 	/**
 	 * This method is used to wait explicitly for some time duration until element to be clickable.
 	 * @param driver 

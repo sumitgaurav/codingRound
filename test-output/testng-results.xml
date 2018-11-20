@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="13304" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:10Z">
+  <suite name="Default suite" duration-ms="18988" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="13304" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:10Z">
-      <class name="testScripts.SignInTestCase">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="setUp" is-config="true" duration-ms="10591" started-at="2018-11-20T10:47:57Z" finished-at="2018-11-20T10:48:08Z">
+    <test name="Default test" duration-ms="18988" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:29Z">
+      <class name="testScripts.FlightBookingTestCase">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="setUp" is-config="true" duration-ms="4819" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSignInError()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="testSignInError" duration-ms="2492" started-at="2018-11-20T10:48:08Z" finished-at="2018-11-20T10:48:10Z">
+        <test-method status="PASS" signature="testSearchFlight()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="testSearchFlight" duration-ms="14032" started-at="2018-11-20T14:50:15Z" finished-at="2018-11-20T14:50:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSignInError -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScripts.SignInTestCase@27efef64]" name="tearDown" is-config="true" duration-ms="188" started-at="2018-11-20T10:48:10Z" finished-at="2018-11-20T10:48:10Z">
+        </test-method> <!-- testSearchFlight -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="tearDown" is-config="true" duration-ms="113" started-at="2018-11-20T14:50:29Z" finished-at="2018-11-20T14:50:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testScripts.SignInTestCase -->
+      </class> <!-- testScripts.FlightBookingTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

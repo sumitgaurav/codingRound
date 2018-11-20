@@ -1,5 +1,7 @@
 package testScripts;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -18,20 +20,21 @@ import testBase.TestBase;
 public class FlightBookingTestCase extends TestBase {
 	
 	FlightBookingPage flightBookingPage;
-	private String fromCityName = "Bangalore";
-	private String toCityName = "Delhi";
-	private int day= 21;
-	private String placeHolderText= "Flights Deal: Get instant cashback upto Rs 3,000. Use coupon: TRVLHPY";
+//	private String fromCityName = "Bangalore";
+//	private String toCityName = "Delhi";
+	static final int CALENDAR_DATE= 21;
+//	private String placeHolderText= "Flights Deal: Get instant cashback upto Rs 3,000. Use coupon: TRVLHPY";
 	
 	/**
 	 * This method will call initBrowser method, where Chrome browser instance will 
 	 * get created and "URL = https://www.cleartrip.com/" will be launched. This method 
 	 * (browser initialization) will be executed before every Test and each test will be 
 	 * independent from another test case. For every test a new session will be created.
+	 * @throws IOException 
 	 *  
 	 */
 	@BeforeTest
-	public void setUp(){
+	public void setUp() throws IOException{
 		initBrowser();
 		flightBookingPage = new FlightBookingPage(driver);
 	}
@@ -39,12 +42,12 @@ public class FlightBookingTestCase extends TestBase {
 	@Test
 	public void testSearchFlight(){
 		flightBookingPage.selectOneWayRadioButton();
-		flightBookingPage.enterFromCityName(fromCityName,0);
-		flightBookingPage.enterToCityName(toCityName,0);
-		flightBookingPage.selectDay(day);
+		flightBookingPage.enterFromCityName(repository.getProperty("fromCityName"),0);
+		flightBookingPage.enterToCityName(repository.getProperty("toCityName"),0);
+		flightBookingPage.selectDay(CALENDAR_DATE);
 		flightBookingPage.clickOnSearchButton();
 		waitForElement(driver, 20, flightBookingPage.flightDealsLink);
-		Assert.assertEquals(flightBookingPage.flightDealsLink.getText(),placeHolderText);
+		Assert.assertEquals(flightBookingPage.flightDealsLink.getText(),repository.getProperty("placeHolderText"));
 	}
 	
 	/**

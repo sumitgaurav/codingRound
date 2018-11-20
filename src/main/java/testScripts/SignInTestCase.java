@@ -1,5 +1,7 @@
 package testScripts;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -27,10 +29,11 @@ public class SignInTestCase extends TestBase {
 	 * get created and "URL = https://www.cleartrip.com/" will be launched. This method 
 	 * (browser initialization) will be executed before every Test and each test will be 
 	 * independent from another test case. For every test a new session will be created.
+	 * @throws IOException 
 	 *  
 	 */
 	@BeforeTest
-	public void setUp(){
+	public void setUp() throws IOException{
 		initBrowser();
 		signInPage = new SignInPage(driver);
 	}

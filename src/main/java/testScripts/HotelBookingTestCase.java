@@ -1,5 +1,8 @@
 package testScripts;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -17,6 +20,9 @@ import testBase.TestBase;
 public class HotelBookingTestCase extends TestBase {
 
 	HotelBookingPage hotelBookingPage;
+	
+	
+	
 	private String cityName= "Indiranagar, Bangalore";
 	private int checkInDate = 17;
 	private int checkOutDate = 18;
@@ -28,10 +34,11 @@ public class HotelBookingTestCase extends TestBase {
 	 * get created and "URL = https://www.cleartrip.com/" will be launched. This method 
 	 * (browser initialization) will be executed before every Test and each test will be 
 	 * independent from another test case. For every test a new session will be created.
+	 * @throws IOException 
 	 *  
 	 */
 	@BeforeTest
-	public void setUp(){
+	public void setUp() throws IOException{
 		initBrowser();
 		hotelBookingPage = new HotelBookingPage(driver);
 	}
