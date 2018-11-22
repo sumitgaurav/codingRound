@@ -1,11 +1,10 @@
 package testScripts;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import pageLibrary.HotelBookingPage;
@@ -26,12 +25,12 @@ public class HotelBookingTestCase extends TestBase {
 	 * This method will call initBrowser method, where Chrome browser instance will 
 	 * get created and "URL = https://www.cleartrip.com/" will be launched. This method 
 	 * (browser initialization) will be executed before every Test and each test will be 
-	 * independent from another test case. For every test a new session will be created.
-	 * @throws IOException 
-	 *  
+	 * independent from another test case. So that, If any test gets failed then other tests will
+	 * not affect because for every test here a new and fresh session will be created.
+	 * @throws IOException  
 	 */
 	@Override
-	@BeforeTest
+	@BeforeMethod
 	public void setUp(){
 		initBrowser();
 		hotelBookingPage = new HotelBookingPage(driver);
@@ -54,7 +53,7 @@ public class HotelBookingTestCase extends TestBase {
 	
 	//This method is used to close the browser after test complete.
 
-	@AfterTest
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}
