@@ -10,20 +10,17 @@ import org.testng.annotations.Test;
 
 import pageLibrary.FlightBookingPage;
 import testBase.TestBase;
+import utils.Constants;
+import utils.Utility;
 
 /**
  * @author Sumit Kumar Sharma
  * @created 20-Nov-2018
- * This java class contains the Test case for Flight booking and validating user successful navigated to search result screen.
  */
 
 public class FlightBookingTestCase extends TestBase {
 	
 	FlightBookingPage flightBookingPage;
-//	private String fromCityName = "Bangalore";
-//	private String toCityName = "Delhi";
-	static final int CALENDAR_DATE= 21;
-//	private String placeHolderText= "Flights Deal: Get instant cashback upto Rs 3,000. Use coupon: TRVLHPY";
 	
 	/**
 	 * This method will call initBrowser method, where Chrome browser instance will 
@@ -34,25 +31,28 @@ public class FlightBookingTestCase extends TestBase {
 	 *  
 	 */
 	@BeforeTest
-	public void setUp() throws IOException{
+	public void setUp(){
 		initBrowser();
 		flightBookingPage = new FlightBookingPage(driver);
 	}
 	
+	// This test method will search for flights between two cities on a particular date,
+	// and will validate user successfully navigated to search result screen. 
+
 	@Test
 	public void testSearchFlight(){
 		flightBookingPage.selectOneWayRadioButton();
-		flightBookingPage.enterFromCityName(repository.getProperty("fromCityName"),0);
-		flightBookingPage.enterToCityName(repository.getProperty("toCityName"),0);
-		flightBookingPage.selectDay(CALENDAR_DATE);
+		flightBookingPage.enterFromCityName(Constants.FROM_CITY_NAME);
+		flightBookingPage.enterToCityName(Constants.TO_CITY_NAME);
+		flightBookingPage.selectDay(Constants.CALENDAR_DATE);
 		flightBookingPage.clickOnSearchButton();
-		waitForElement(driver, 20, flightBookingPage.flightDealsLink);
-		Assert.assertEquals(flightBookingPage.flightDealsLink.getText(),repository.getProperty("placeHolderText"));
+		Utility.waitForElement(driver, 20, flightBookingPage.flightDealsLink);
+		Assert.assertTrue(flightBookingPage.flightDealsLink.getText().contains(Constants.PLACE_HOLDER_TEXT_FLIGHT));
 	}
 	
-	/**
-	 * This method is used to close the browser after test complete.
-	 */
+	
+	 // This method is used to close the browser after test complete.
+	
 	@AfterTest
 	public void tearDown() {
 		driver.quit();

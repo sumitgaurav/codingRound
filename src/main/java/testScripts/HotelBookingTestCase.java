@@ -10,24 +10,17 @@ import org.testng.annotations.Test;
 
 import pageLibrary.HotelBookingPage;
 import testBase.TestBase;
+import utils.Constants;
+import utils.Utility;
 
 /**
  * @author Sumit Kumar Sharma
  * @created 20-Nov-2018
- * This java class contains the Test case for Hotel booking and validating user successful navigated to search result screen.
  */
 
 public class HotelBookingTestCase extends TestBase {
 
 	HotelBookingPage hotelBookingPage;
-	
-	
-	
-	private String cityName= "Indiranagar, Bangalore";
-	private int checkInDate = 17;
-	private int checkOutDate = 18;
-	private String traveller = "1 room, 2 adults";
-	private String placeHolderText= "Search for location, hotel or address in Bangalore";
 	
 	/**
 	 * This method will call initBrowser method, where Chrome browser instance will 
@@ -37,28 +30,30 @@ public class HotelBookingTestCase extends TestBase {
 	 * @throws IOException 
 	 *  
 	 */
+	@Override
 	@BeforeTest
-	public void setUp() throws IOException{
+	public void setUp(){
 		initBrowser();
 		hotelBookingPage = new HotelBookingPage(driver);
 	}
 	
+	// This test method will search for hotels in a particular city and validating user successful navigated to search result screen.
 	@Test
 	public void testSearchHotels() throws InterruptedException{
 		hotelBookingPage.clickOnHotelsTab();
-		waitForElement(driver, 20,hotelBookingPage.localityTextBox);
-		hotelBookingPage.enterLocalityAndCityName(cityName);
-		hotelBookingPage.selectDay(checkInDate);
-		hotelBookingPage.selectDay(checkOutDate);
-		hotelBookingPage.selectTravellers(traveller);
+		Utility.waitForElement(driver, 20,hotelBookingPage.localityTextBox);
+		hotelBookingPage.enterLocalityAndCityName(Constants.CITY_NAME);
+		hotelBookingPage.selectDay(Constants.CHECK_IN_DATE);
+		hotelBookingPage.selectDay(Constants.CHECK_OUT_DATE);
+		hotelBookingPage.selectTravellers(Constants.TRAVELLER);
 		hotelBookingPage.clickOnSearchButton();
-		waitForElement(driver, 20, hotelBookingPage.searchTextBox);
-		Assert.assertEquals(hotelBookingPage.searchTextBox.getAttribute("placeholder"), placeHolderText);
+		Utility.waitForElement(driver, 20, hotelBookingPage.searchTextBox);
+		Assert.assertEquals(hotelBookingPage.searchTextBox.getAttribute("placeholder"), Constants.PLACE_HOLDER_TEXT_HOTEL);
 	}
 	
-	/**
-	 * This method is used to close the browser after test complete.
-	 */
+	
+	//This method is used to close the browser after test complete.
+
 	@AfterTest
 	public void tearDown() {
 		driver.quit();

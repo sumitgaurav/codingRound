@@ -1,6 +1,7 @@
 package pageLibrary;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import testBase.TestBase;
+import utils.Constants;
 import utils.Utility;
 
 /**
@@ -39,7 +41,7 @@ public class HotelBookingPage {
     @FindBy(id = "SearchHotelsButton")
     private WebElement searchButton;
     
-    @FindBy(id = "ui-id-1")
+    @FindBy(xpath = "//ul[@id='ui-id-1']//li[@class='list']")
     private WebElement localityList;
      
     @FindBy(xpath = "//td[not(contains(@class,'ui-datepicker-unselectable'))]")
@@ -54,6 +56,7 @@ public class HotelBookingPage {
 	 * @param driver
 	 */
     public HotelBookingPage(WebDriver driver){
+    	this.driver=driver;
     	PageFactory.initElements(driver, this);
     }
     
@@ -71,8 +74,8 @@ public class HotelBookingPage {
      */
     public void enterLocalityAndCityName(String name){
     	localityTextBox.sendKeys(name);
-    	Utility.waitFor(5);
-    	localityList.findElements(By.tagName("li")).get(1).click();
+    	Utility.waitForElementToVisible(driver, 20, localityList);
+    	localityTextBox.sendKeys(Keys.ENTER);
     }
     
     /**

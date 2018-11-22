@@ -35,6 +35,7 @@ public class SignInPage {
 	 * @param driver
 	 */
 	public SignInPage(WebDriver driver){
+		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	

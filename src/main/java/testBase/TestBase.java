@@ -18,6 +18,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import utils.Constants;
+
 import com.sun.javafx.PlatformUtil;
 
 /**
@@ -27,54 +29,22 @@ import com.sun.javafx.PlatformUtil;
  */
 public abstract class TestBase {
 	public static WebDriver driver;
-	public static Properties repository = new Properties();
-	public File fis;
-	public FileInputStream file;
 	
-	public abstract void setUp() throws IOException;
+	// Creating abstract method (without any implementation), Implementation have to provide by the classes who will be extending this TestBase class.
+	public abstract void setUp();
 	
 	/**
 	 * This method is used to initialize the Chrome browser and redirecting to URL.
 	 * @throws IOException 
 	 */
-	public void initBrowser() throws IOException{
-		loadPropertiesFile();
+	public void initBrowser(){
 		Map<String, Object> preference = new HashMap<String, Object>();
 		preference.put("profile.default_content_setting_values.notifications", 2);
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", preference);
 		driver = new ChromeDriver(options);
 		setDriverPath();
-		driver.get(repository.getProperty("URL"));
-	}
-	
-	public void loadPropertiesFile() throws IOException{
-		fis = new File(System.getProperty("user.dir")+"/src/main/java/properties/ObjectProperties");
-		file=new FileInputStream(fis);
-		repository.load(file);
-	}
-	/**
-	 * This method is used to wait explicitly for some time duration until element to be clickable.
-	 * @param driver 
-	 * @param time
-	 * @param element
-	 * @return
-	 */
-	public WebElement waitForElement(WebDriver driver,long time, WebElement element ){
-		WebDriverWait wait = new WebDriverWait(driver, time);
-		return wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
-	
-	/**
-	 * This method is used to wait explicitly for some time duration until element to be visible.
-	 * @param driver 
-	 * @param time
-	 * @param element
-	 * @return
-	 */
-	public WebElement waitForElementToVisible(WebDriver driver, int time, WebElement element){
-		WebDriverWait wait = new WebDriverWait(driver, time);
-		return wait.until(ExpectedConditions.visibilityOf(element));	
+		driver.get(Constants._URL);
 	}
 	
 	/**

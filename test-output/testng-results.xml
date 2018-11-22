@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18988" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:29Z">
+  <suite name="Default suite" duration-ms="26195" started-at="2018-11-22T10:32:33Z" finished-at="2018-11-22T10:32:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18988" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:29Z">
-      <class name="testScripts.FlightBookingTestCase">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="setUp" is-config="true" duration-ms="4819" started-at="2018-11-20T14:50:10Z" finished-at="2018-11-20T14:50:15Z">
+    <test name="Default test" duration-ms="26195" started-at="2018-11-22T10:32:33Z" finished-at="2018-11-22T10:32:59Z">
+      <class name="testScripts.HotelBookingTestCase">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScripts.HotelBookingTestCase@3532ec19]" name="setUp" is-config="true" duration-ms="5604" started-at="2018-11-22T10:32:33Z" finished-at="2018-11-22T10:32:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSearchFlight()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="testSearchFlight" duration-ms="14032" started-at="2018-11-20T14:50:15Z" finished-at="2018-11-20T14:50:29Z">
+        <test-method status="PASS" signature="testSearchHotels()[pri:0, instance:testScripts.HotelBookingTestCase@3532ec19]" name="testSearchHotels" duration-ms="20381" started-at="2018-11-22T10:32:39Z" finished-at="2018-11-22T10:32:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSearchFlight -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScripts.FlightBookingTestCase@27efef64]" name="tearDown" is-config="true" duration-ms="113" started-at="2018-11-20T14:50:29Z" finished-at="2018-11-20T14:50:29Z">
+        </test-method> <!-- testSearchHotels -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScripts.HotelBookingTestCase@3532ec19]" name="tearDown" is-config="true" duration-ms="187" started-at="2018-11-22T10:32:59Z" finished-at="2018-11-22T10:32:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testScripts.FlightBookingTestCase -->
+      </class> <!-- testScripts.HotelBookingTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

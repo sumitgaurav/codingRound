@@ -1,12 +1,13 @@
 package pageLibrary;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import testBase.TestBase;
+import utils.Constants;
 import utils.Utility;
 
 /**
@@ -17,8 +18,7 @@ import utils.Utility;
 
 public class FlightBookingPage {
 	  WebDriver driver;
-	  static final int DELAY_TIME = 5;
-	
+	 
 	 @FindBy(id = "OneWay")
 	  private WebElement oneWayRadioBtn;
 	 
@@ -27,12 +27,6 @@ public class FlightBookingPage {
 	 
 	 @FindBy(id = "ToTag")
 	  private WebElement toTextField;
-	 
-	 @FindBy(id = "ui-id-1")
-	  private WebElement fromOptions;
-	 
-	 @FindBy(id = "ui-id-2")
-	  private WebElement toOptions;
 	 
 	 @FindBy(id="DepartDate")
 	 private WebElement calendar;
@@ -46,15 +40,19 @@ public class FlightBookingPage {
 	 @FindBy(xpath = "//div[@class='mDeal clearFix']//a")
 	  public WebElement flightDealsLink;
 	 
-	 @FindBy(tagName="li")
-	 private WebElement list;
+	 @FindBy(xpath="//ul[@id='ui-id-1']//li[@class='list']")
+	 private WebElement fromList;
+	 
+	 @FindBy(xpath="//ul[@id='ui-id-2']//li[@class='list']")
+	 private WebElement toList;
 	 
 	/**
 	 * Class constructor to initialize the web elements
 	 * @param driver
 	 */ 
 	  public FlightBookingPage(WebDriver driver){
-	    	PageFactory.initElements(driver, this);
+		  this.driver=driver;
+	      PageFactory.initElements(driver, this);
 	    }
 	  
 	  /**
@@ -68,11 +66,11 @@ public class FlightBookingPage {
 	   * This method is used to enter the city name in "From" text field.
 	   * @param cityName
 	   */
-	  public void enterFromCityName(String cityName, int index){
+	  public void enterFromCityName(String cityName){
 		  fromTextField.clear();
 		  fromTextField.sendKeys(cityName);
-		  Utility.waitFor(DELAY_TIME);
-		  fromOptions.findElements(By.tagName("li")).get(index).click();		  
+		  Utility.waitForElementToVisible(driver, 20, fromList);
+	      fromTextField.sendKeys(Keys.ENTER);	  
 	  }
 	  
 	  /**
@@ -80,11 +78,11 @@ public class FlightBookingPage {
 	   * @param cityName
 	   * @param index
 	   */
-	  public void enterToCityName(String cityName,int index){
+	  public void enterToCityName(String cityName){
 		  toTextField.clear();
 		  toTextField.sendKeys(cityName);
-		  Utility.waitFor(DELAY_TIME);
-		  toOptions.findElements(By.tagName("li")).get(index).click();
+		  Utility.waitForElementToVisible(driver, 20, toList);
+	      toTextField.sendKeys(Keys.ENTER);
 	  }
 	  
 	  /**
